@@ -24,23 +24,23 @@ function RenderListLeft() {
   return (
     <ul>
       <li>
-        <a href="#">
-          <Icon type="book" /> Cursos Online
+        <a href="/admin">
+          <Icon type="book" /> Panel de administrador
+        </a>
+      </li>
+      <li>
+        <a href="/guias">
+          <Icon type="code" /> Guías
+        </a>
+      </li>
+      <li>
+        <a href="/blog">
+          <Icon type="database" /> Blog
         </a>
       </li>
       <li>
         <a href="#">
-          <Icon type="code" /> Desarrollo Web
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon type="database" /> Base de Datos
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon type="right" /> Politica de Privacidad
+          <Icon type="right" /> Nosotros
         </a>
       </li>
     </ul>
@@ -52,24 +52,10 @@ function RenderListRight() {
     <ul>
       <li>
         <a href="#">
-          <Icon type="hdd" /> Sistemas / Servidores
+          <Icon type="hdd" /> Contacto
         </a>
       </li>
-      <li>
-        <a href="#">
-          <Icon type="appstore" /> CMS
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon type="user" /> Porfolio
-        </a>
-      </li>
-      <li>
-        <a href="#">
-          <Icon type="right" /> Política de Cookies
-        </a>
-      </li>
+      
     </ul>
   );
 }

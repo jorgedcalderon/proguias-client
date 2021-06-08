@@ -1,5 +1,5 @@
 import React from "react";
-import LogoWhite from "../../../../assets/img/png/logo-white.png";
+import Logo from "../../../../assets/img/png/logo-izq-proguias-san-pedro.png";
 import SocialLink from "../../SocialLinks";
 
 import "./MyInfo.scss";
@@ -7,10 +7,9 @@ import "./MyInfo.scss";
 export default function MyInfo() {
   return (
     <div className="my-info">
-      <img src={LogoWhite} alt="Agustín Navarro Galdon" />
+      <img src={Logo} alt="Pro Guías San Pedro de Atacama" />
       <h4>
-        Entra en el mundo del desarrollo web, disfruta creando proyectos de todo
-        tipo, deja que tú imaginación fluya y crea verdaderas maravillas!!
+        Amplía tus conocimientos como Guía, únete a una comunidad de Guías certificados en San Pedro y obten los cursos más nuevos.
       </h4>
       <SocialLink />
     </div>

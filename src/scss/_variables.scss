@@ -1,9 +1,10 @@
 $defaultFontSize: 16px;
 
-$primary-color: #0098d3;
-$primary-color-hover: #0280b3;
-$primary-color-light: #6ec1e4;
-$primary-color-dark: #8698a5;
+$primary-color: #ff8d01;
+$primary-color-hover: #d67b0c;
+$primary-color-light: #ffaf01;
+$primary-color-dark: #db6f16;
+$complementary: rgb(25, 150, 207);
 
 $menu-color: #252527;
 
@@ -11,7 +12,7 @@ $font-light: #fff;
 $font-grey-light: #e8e8e8;
 $font-grey: #808080;
 $font-grey-dark: #000;
-$font-dark-light: #252527;
+$font-dark-light: #39393a;
 $font-dark: #000;
 
 $border-light: #fff;
@@ -54,3 +55,16 @@ $media-breackpoint-up-sm: 576px;
 $media-breackpoint-up-md: 768px;
 $media-breackpoint-up-lg: 992px;
 $media-breackpoint-up-xl: 1200px;
+
+//botones primarios
+.ant-btn-primary {
+  background-color: $complementary;
+}
+
+.ant-layout-header {
+  background-color: $background-grey-light;
+}
+
+.ant-layout-sider {
+  background-color: $background-light;
+}

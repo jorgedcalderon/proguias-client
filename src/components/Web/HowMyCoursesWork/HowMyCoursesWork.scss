@@ -6,18 +6,18 @@
 
   &__title {
     text-align: center;
-    line-height: 0.7;
+    // line-height: 0.7;
     margin-bottom: 40px;
 
     h2 {
-      color: $font-light;
+      color: $font-dark-light;
       font-size: 32px;
       font-weight: bold;
       text-transform: uppercase;
     }
 
     h3 {
-      color: $primary-color-light;
+      color: $font-grey;
     }
   }
 
@@ -44,17 +44,17 @@
     i {
       font-size: 45px;
       margin-bottom: 20px;
-      color: $primary-color-light;
+      color: $font-light;
     }
 
     .ant-card-meta-detail {
       .ant-card-meta-title {
-        color: $primary-color-light;
+        color: $primary-color;
         font-size: 25px;
         font-weight: bold;
       }
       .ant-card-meta-description {
-        color: $primary-color-dark;
+        color: $font-light;
       }
     }
   }

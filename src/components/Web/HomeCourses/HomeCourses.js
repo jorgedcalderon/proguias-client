@@ -1,12 +1,11 @@
 import React from "react";
 import { Row, Col, Card, Button } from "antd";
 import { Link } from "react-router-dom";
-import reactJsHooks from "../../../assets/img/jpg/react-js-hooks.jpg";
-import reactNative from "../../../assets/img/jpg/react-native.jpg";
-import javaScript from "../../../assets/img/jpg/javascript-es6.jpg";
-import wordPress from "../../../assets/img/jpg/wordpress.jpg";
-import prestaShop from "../../../assets/img/jpg/prestashop-1-7.jpg";
-import cssGrid from "../../../assets/img/jpg/css-grid.jpg";
+import cursoUno from "../../../assets/img/jpg/curso-uno.jpg";
+import cursoDos from "../../../assets/img/jpg/curso-dos.jpg";
+import cursoTres from "../../../assets/img/jpg/cursoTres.jpg";
+import cursoCuatro from "../../../assets/img/jpg/curso-cuatro.jpeg";
+
 
 import "./HomeCourses.scss";
 
@@ -19,59 +18,40 @@ export default function HomeCourses() {
       <Col lg={4} />
       <Col lg={16}>
         <Row className="row-courses">
-          <Col md={6}>
+          <Col md={12}>
             <CardCourse
-              image={reactJsHooks}
-              title="React JS Hooks"
-              subtitle="Intermedio - React/JavaScript"
-              link="https://courses.agustinnavarrogaldon.com/react"
+              image={cursoUno}
+              title="Recursos hídricos en la cuenca de Atacama"
+              subtitle="Imparte: José Luis Rojas"
+              link="#"
             />
           </Col>
-          <Col md={6}>
+          <Col md={12}>
             <CardCourse
-              image={reactNative}
-              title="React Native Expo"
-              subtitle="Intermedio - React/JavaScript"
-              link="https://courses.agustinnavarrogaldon.com/react-native-expo"
+              image={cursoDos}
+              title="Geología"
+              subtitle="Imparte: Benjamin Arenas"
+              link="#"
             />
           </Col>
-          <Col md={6}>
+          <Col md={12}>
             <CardCourse
-              image={javaScript}
-              title="JavaScript ES6"
-              subtitle="Básico - JavaScript"
-              link="https://courses.agustinnavarrogaldon.com/javascript"
+              image={cursoTres}
+              title="Explorando el Altiplano - Fauna en la Puna"
+              subtitle="Imparte: Maira Alejandra Fernandez"
+              link="#"
             />
           </Col>
-          <Col md={6}>
+          <Col md={12}>
             <CardCourse
-              image={wordPress}
-              title="WordPress"
-              subtitle="Básico - WordPress"
-              link="https://courses.agustinnavarrogaldon.com/wordpress"
-            />
-          </Col>
-        </Row>
-        <Row className="row-courses">
-          <Col md={6}>
-            <CardCourse
-              image={prestaShop}
-              title="PrestaShop 1.7"
-              subtitle="Básico - PrestaShop"
-              link="https://courses.agustinnavarrogaldon.com/prestashop"
-            />
-          </Col>
-          <Col md={6} />
-          <Col md={6} />
-          <Col md={6}>
-            <CardCourse
-              image={cssGrid}
-              title="CSS Grid"
-              subtitle="Intermedio - CSS"
-              link="https://courses.agustinnavarrogaldon.com/css-grid"
+              image={cursoCuatro}
+              title="Ecología aplicada"
+              subtitle="Imparte: Rene Grunztenberg"
+              link="#"
             />
           </Col>
         </Row>
+        
       </Col>
       <Col lg={4} />
       <Col lg={24} className="home-courses__more">

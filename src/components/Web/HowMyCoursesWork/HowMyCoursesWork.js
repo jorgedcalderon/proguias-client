@@ -7,10 +7,9 @@ export default function HowMyCoursesWork() {
   return (
     <Row className="how-my-courses-work">
       <Col lg={24} className="how-my-courses-work__title">
-        <h2>¿Cómo funcionan mis cursos?</h2>
+        <h2>¿Qué es Pro Guías?</h2>
         <h3>
-          Cada curso cuenta con contenido bajo la web de Udemy, activa las 24
-          horas al día los 365 días del año
+        Pro Guias es una organización dedicada al trabajo con profesionales en la labor turística, ofreciendo servicios de información, orientación y formación a trabajadores de turismo en San Pedro de Atacama, con la finalidad de estandarizar las labores de turismo y crear un servicio de calidad. Asimismo nos dedicamos al manejo de información turística con el fin de orientar y dar la mejor experiencia al visitante en San Pedro de Atacama.
         </h3>
       </Col>
 
@@ -21,25 +20,25 @@ export default function HowMyCoursesWork() {
             <CardInfo
               icon="clock-circle"
               title="Cursos y Clases"
-              description="Cursos de entre 10 y 30 horas y cada clase del curso con duración máxima de 15 minutos, faciles de llevar en tu día a día de aprendizaje."
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac lorem imperdiet, dapibus risus et, interdum urna. Sed vitae diam orci. Integer vitae nisi elit. Cras varius in risus ac cursus."
             />
           </Col>
           <Col md={8}>
             <CardInfo
               icon="key"
-              title="Acceso 24/7"
-              description="Accede a los cursos en cualquier momento, desde cualquier lugar sin importar día y hora."
+              title="Tarjeta de Pro Guías "
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac lorem imperdiet, dapibus risus et, interdum urna. Sed vitae diam orci. Integer vitae nisi elit. Cras varius in risus ac cursus."
             />
           </Col>
           <Col md={8}>
             <CardInfo
               icon="message"
-              title="Aprendizaje colaboratico"
-              description="Aprende de los demás dejando tus dudas para que profesores y compañeros te ayuden."
+              title="Accesso a capacitaciones gratuitas"
+              description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ac lorem imperdiet, dapibus risus et, interdum urna. Sed vitae diam orci. Integer vitae nisi elit. Cras varius in risus ac cursus."
             />
           </Col>
         </Row>
-        <Row className="row-cards">
+        {/* <Row className="row-cards">
           <Col md={8}>
             <CardInfo
               icon="user"
@@ -61,7 +60,7 @@ export default function HowMyCoursesWork() {
               description="Al completar tu un curso recibirás una certificación que te expedirá Udemy en PDF."
             />
           </Col>
-        </Row>
+        </Row> */}
       </Col>
       <Col lg={4} />
     </Row>

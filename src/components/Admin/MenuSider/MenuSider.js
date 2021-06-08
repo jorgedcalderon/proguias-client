@@ -11,7 +11,7 @@ function MenuSider(props) {
   return (
     <Sider className="admin-sider" collapsed={menuCollapsed}>
       <Menu
-        theme="dark"
+        // theme="dark"
         mode="inline"
         // defaultSelectedKeys={[location.pathname]}
         defaultSelectedKeys={["/admin/users"]}

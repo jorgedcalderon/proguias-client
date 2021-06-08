@@ -3,7 +3,7 @@ import { Menu } from "antd";
 import { Link } from "react-router-dom";
 import SocialLinks from "../SocialLinks";
 import { getMenuApi } from "../../../api/menu";
-import logoWhite from "../../../assets/img/png/logo-white.png";
+import ProLogo from "../../../assets/img/png/logo-izq-proguias-san-pedro.png";
 
 import "./MenuTop.scss";
 
@@ -24,7 +24,7 @@ export default function MenuTop() {
     <Menu className="menu-top-web" mode="horizontal">
       <Menu.Item className="menu-top-web__logo">
         <Link to={"/"}>
-          <img src={logoWhite} alt="Agustín Navarro Galdon" />
+          <img src={ProLogo} alt="Pro Guias San Pedro de Atacama" />
         </Link>
       </Menu.Item>
 

@@ -9,17 +9,17 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Agustín Navarro Galdon</title>
+        <title>Guías San Pedro de Atacama</title>
         <meta
           name="description"
-          content="Home | Web sobre programación"
+          content="Pro Guías San Pedro de Atacama"
           data-react-helmet="true"
         />
       </Helmet>
       <MainBanner />
       <HomeCourses />
       <HowMyCoursesWork />
-      <ReviewsCourses />
+      {/* <ReviewsCourses /> */}
     </>
   );
 }

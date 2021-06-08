@@ -11,8 +11,7 @@ export default function ReviewsCourses() {
         <Col lg={4} />
         <Col lg={16} className="reviews-courses__title">
           <h2>
-            Forma parte de los +35 mil estudiantes que estan aprendiendo con mis
-            cursos
+            Forma parte de Pro Guías San Pedro de Atacama
           </h2>
         </Col>
         <Col lg={4} />

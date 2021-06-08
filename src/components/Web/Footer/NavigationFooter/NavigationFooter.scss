@@ -2,7 +2,7 @@
 
 .navigation-footer {
   h3 {
-    color: $font-light;
+    color: $font-dark-light;
     font-weight: bold;
   }
 
@@ -14,7 +14,7 @@
       padding: 5px 0;
 
       a {
-        color: $primary-color-dark;
+        color: $font-grey;
         &:hover {
           color: $primary-color;
         }

@@ -11,12 +11,12 @@ export default function MainBanner() {
         <Col lg={4} />
         <Col lg={16}>
           <h2>
-            Aprende nuevas <br /> tecnologías web y móvil.
+            Pro Guías <br /> San Pedro de Atacama.
           </h2>
           <h3>
-            A través de cursos práctivos, concisos y actualizados, creados por{" "}
+          Un acercamiento a un lugar maravilloso.
             <br />
-            profesionales con años de experiencia.
+            Accede a información detallada de San Pedro de Atacama y sus destinos turísticos.
           </h3>
         </Col>
         <Col lg={4} />

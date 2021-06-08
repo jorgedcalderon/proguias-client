@@ -9,16 +9,16 @@ import "./SocialLinks.scss";
 export default function SocialLinks() {
   return (
     <div className="social-links">
-      <a
+      {/* <a
         href="https://www.youtube.com/c/AgustinNavarroGaldon?sub_confirmation=1"
         className="youtube"
         target="_blank"
         rel="noopener noreferrer"
       >
         <YouTubeIcon />
-      </a>
+      </a> */}
       <a
-        href="https://twitter.com/xagustin93"
+        href="https://twitter.com/gremioproguias"
         className="twitter"
         target="_blank"
         rel="noopener noreferrer"
@@ -26,7 +26,7 @@ export default function SocialLinks() {
         <TwitterIcon />
       </a>
       <a
-        href="https://www.facebook.com/AgustinNavarroGaldon"
+        href="https://www.facebook.com/gremioproguias"
         className="facebook"
         target="_blank"
         rel="noopener noreferrer"
@@ -34,7 +34,7 @@ export default function SocialLinks() {
         <FacebookIcon />
       </a>
       <a
-        href="https://es.linkedin.com/in/agustin93"
+        href="https://www.instagram.com/gremioproguias/"
         className="linkedin"
         target="_blank"
         rel="noopener noreferrer"
