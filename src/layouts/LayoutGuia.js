@@ -3,12 +3,12 @@ import { Route, Switch, Redirect } from "react-router-dom";
 import { Layout } from "antd";
 import useAuth from "../hooks/useAuth";
 import MenuTop from "../components/Admin/MenuTop";
-import MenuSider from "../components/Admin/MenuSider";
-import AdminSignIn from "../pages/Admin/SignIn";
+import MenuSider from "../components/Guias/MenuSider";
+import GuiaSignIn from "../pages/Guia/SignInGuia";
 
-import "./LayoutAdmin.scss";
+import "./LayoutGuia.scss";
 
-export default function LayoutAdmin(props) {
+export default function LayoutGuia(props) {
   const { routes } = props;
   const [menuCollapsed, setMenuCollapsed] = useState(false);
   const { Header, Content, Footer } = Layout;
@@ -17,25 +17,12 @@ export default function LayoutAdmin(props) {
   if (!user && !isLoading) {
     return (
       <>
-        <Route path="/admin/login" component={AdminSignIn} />
-        <Redirect to="/admin/login" />
+        <Route path="/guia/login" component={GuiaSignIn} />
+        <Redirect to="/guia/login" />
       </>
     );
   }
-  
-  
-
-  console.log(user);
-
   if (user && !isLoading) {
-    if (user.isGuia === true) {
-      return (
-        <>
-          {/* <Route path="/guia" component={AdminSignIn} /> */}
-          <Redirect to="/guia" />
-        </>
-      );
-    }
     return (
       <Layout>
         <MenuSider menuCollapsed={menuCollapsed} />

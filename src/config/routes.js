@@ -1,6 +1,7 @@
 // Layout
 import LayoutAdmin from "../layouts/LayoutAdmin";
 import LayoutBasic from "../layouts/LayoutBasic";
+import LayoutGuia from "../layouts/LayoutGuia";
 
 // Admin Pages
 import AdminHome from "../pages/Admin";
@@ -9,6 +10,10 @@ import AdminUsers from "../pages/Admin/Users";
 import AdminMenuWeb from "../pages/Admin/MenuWeb";
 import AdminCourses from "../pages/Admin/Courses";
 import AdminBlog from "../pages/Admin/Blog";
+
+// Guia Pages
+import GuiaHome from "../pages/Guia";
+import GuiaSingIn from "../pages/Guia/SignInGuia";
 
 // Pages
 import Home from "../pages/Home";
@@ -20,6 +25,23 @@ import Blog from "../pages/Blog";
 import Error404 from "../pages/Error404";
 
 const routes = [
+  {
+    path: "/guia",
+    component: LayoutGuia,
+    exact: false,
+    routes: [
+      {
+        path: "/guia",
+        component: GuiaHome,
+        exact: true
+      },
+      {
+        path: "/guia/login",
+        component: GuiaSingIn,
+        exact: true
+      }
+    ]
+  },
   {
     path: "/admin",
     component: LayoutAdmin,
