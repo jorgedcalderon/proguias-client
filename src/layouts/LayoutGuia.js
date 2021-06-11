@@ -23,6 +23,13 @@ export default function LayoutGuia(props) {
     );
   }
   if (user && !isLoading) {
+    if (user.isGuia === false) {
+      return (
+        <>
+          <Redirect to="/admin" />
+        </>
+      );
+    }
     return (
       <Layout>
         <MenuSider menuCollapsed={menuCollapsed} />

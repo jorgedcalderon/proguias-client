@@ -46,6 +46,13 @@ function MenuSider(props) {
             <span className="nac-text">Blog</span>
           </Link>
         </Menu.Item>
+        <Menu.Item key="/admin/guias">
+          <Link to="/admin/guias">
+            <Icon type="user" />
+            <span className="nac-text">Guias</span>
+          </Link>
+        </Menu.Item>
+        
       </Menu>
     </Sider>
   );
