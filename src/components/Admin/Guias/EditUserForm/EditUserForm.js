@@ -13,10 +13,10 @@ import {
 import { useDropzone } from "react-dropzone";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import {
-  updateUserApi,
+  updateGuiaApi,
   uploadAvatarApi,
   getAvatarApi
-} from "../../../../api/user";
+} from "../../../../api/guia";
 import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./EditUserForm.scss";
@@ -79,7 +79,7 @@ export default function EditUserForm(props) {
     if (typeof userUpdate.avatar === "object") {
       uploadAvatarApi(token, userUpdate.avatar, user._id).then(response => {
         userUpdate.avatar = response.avatarName;
-        updateUserApi(token, userUpdate, user._id).then(result => {
+        updateGuiaApi(token, userUpdate, user._id).then(result => {
           notification["success"]({
             message: result.message
           });
@@ -88,7 +88,7 @@ export default function EditUserForm(props) {
         });
       });
     } else {
-      updateUserApi(token, userUpdate, user._id).then(result => {
+      updateGuiaApi(token, userUpdate, user._id).then(result => {
         notification["success"]({
           message: result.message
         });

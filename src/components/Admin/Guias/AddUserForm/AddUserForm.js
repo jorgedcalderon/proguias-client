@@ -9,7 +9,7 @@ import {
   Col,
   notification
 } from "antd";
-import { signUpAdminApi } from "../../../../api/user";
+import { signUpAdminGuiaApi } from "../../../../api/guia";
 import { getAccessTokenApi } from "../../../../api/auth";
 
 import "./AddUserForm.scss";
@@ -39,7 +39,7 @@ export default function EditUserForm(props) {
     } else {
       const accesToken = getAccessTokenApi();
 
-      signUpAdminApi(accesToken, userData)
+      signUpAdminGuiaApi(accesToken, userData)
         .then(response => {
           notification["success"]({
             message: response

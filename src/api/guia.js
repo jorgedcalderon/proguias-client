@@ -134,7 +134,7 @@ export function getAvatarApi(avatarName) {
     });
 }
 
-export function updateUserApi(token, user, userId) {
+export function updateGuiaApi(token, user, userId) {
   const url = `${basePath}/${apiVersion}/update-guia/${userId}`;
 
   const params = {
@@ -159,7 +159,7 @@ export function updateUserApi(token, user, userId) {
 }
 
 export function activateGuiaApi(token, userId, status) {
-  const url = `${basePath}/${apiVersion}/activate-user/${userId}`;
+  const url = `${basePath}/${apiVersion}/activate-guia/${userId}`;
 
   const params = {
     method: "PUT",
@@ -185,7 +185,7 @@ export function activateGuiaApi(token, userId, status) {
 }
 
 export function deleteGuiaApi(token, userId) {
-  const url = `${basePath}/${apiVersion}/delete-user/${userId}`;
+  const url = `${basePath}/${apiVersion}/delete-guia/${userId}`;
 
   const params = {
     method: "DELETE",
@@ -193,6 +193,30 @@ export function deleteGuiaApi(token, userId) {
       "Content-Type": "application/json",
       Authorization: token
     }
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result.message;
+    })
+    .catch(err => {
+      return err.message;
+    });
+}
+
+export function signUpAdminGuiaApi(token, data) {
+  const url = `${basePath}/${apiVersion}/sign-up-admin-guia`;
+
+  const params = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    body: JSON.stringify(data)
   };
 
   return fetch(url, params)

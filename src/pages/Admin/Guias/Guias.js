@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { getAccessTokenApi } from "../../../api/auth";
 import { getGuiasActiveApi } from "../../../api/guia";
-import ListUsers from "../../../components/Admin/Users/ListUsers";
+import ListUsers from "../../../components/Admin/Guias/ListUsers";
 
 import "./Guias.scss";
 

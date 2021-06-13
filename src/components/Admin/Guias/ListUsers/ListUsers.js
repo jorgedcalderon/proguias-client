@@ -50,7 +50,7 @@ export default function ListUsers(props) {
             onChange={() => setViewUsersActives(!viewUsersActives)}
           />
           <span>
-            {viewUsersActives ? "Usuarios Activos" : "Usuarios Inactivos"}
+            {viewUsersActives ? "Guías Activos" : "Guías Inactivos"}
           </span>
         </div>
         <Button type="primary" onClick={addUserModal}>
