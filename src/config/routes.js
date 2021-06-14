@@ -21,6 +21,7 @@ import Home from "../pages/Home";
 import Contact from "../pages/Contact";
 import Courses from "../pages/Courses";
 import Blog from "../pages/Blog";
+import Guias from "../pages/Guia";
 
 // Other
 import Error404 from "../pages/Error404";
@@ -39,6 +40,11 @@ const routes = [
       {
         path: "/guia/login",
         component: GuiaSingIn,
+        exact: true
+      },
+      {
+        path: "/guia/:url",
+        component: Guias,
         exact: true
       }
     ]

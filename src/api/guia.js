@@ -231,3 +231,18 @@ export function signUpAdminGuiaApi(token, data) {
     });
 }
 
+export function getGuiaApi(urlGuia) {
+  const url = `${basePath}/${apiVersion}/get-guia/${urlGuia}`;
+
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err;
+    });
+}
+
