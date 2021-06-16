@@ -9,6 +9,7 @@ import GuiaInfo from "../../components/Web/Guias/GuiaInfo";
 export default function Guia(props) {
   const { location, history } = props;
   const { url } = useParams();
+  // const url = "calderon-david"
 
   return (
     <Row>

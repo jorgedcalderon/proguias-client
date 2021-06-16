@@ -50,29 +50,6 @@ export function signInGuiaApi(data) {
 }
 
 
-export function getGuiasApi(token) {
-  const url = `${basePath}/${apiVersion}/guias`;
-
-  const params = {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: token
-    }
-  };
-
-  return fetch(url, params)
-    .then(response => {
-      return response.json();
-    })
-    .then(result => {
-      return result;
-    })
-    .catch(err => {
-      return err.message;
-    });
-}
-
 export function getGuiasActiveApi(token, status) {
   const url = `${basePath}/${apiVersion}/guias-active?active=${status}`;
 
@@ -231,8 +208,46 @@ export function signUpAdminGuiaApi(token, data) {
     });
 }
 
+export function getGuiasApi(token) {
+  const url = `${basePath}/${apiVersion}/guias`;
+
+  const params = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    }
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err.message;
+    });
+}
+
 export function getGuiaApi(urlGuia) {
   const url = `${basePath}/${apiVersion}/get-guia/${urlGuia}`;
+
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err;
+    });
+}
+
+export function getGuiasPagApi(limit, page) {
+  const url = `${basePath}/${apiVersion}/get-guias-pag?limit=${limit}&page=${page}`;
 
   return fetch(url)
     .then(response => {
