@@ -1,33 +1,57 @@
 @import "../../../../scss/index.scss";
 
-.posts-list-web {
-  margin: 50px 0;
-
-  > h1 {
-    text-align: center;
-    color: $font-light;
-    margin: 50px 0;
+.guias-list-web {
+  &__list {
+    margin-top: 50px;
+    margin-bottom: 50px;
   }
 
-  .post {
-    color: $font-light;
+  &__title {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: bold;
+    color: $font-grey;
+  }
 
-    &__date {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      background-color: $primary-color;
-      margin-right: 20px;
-      border-radius: 5px;
-      text-transform: capitalize;
-      padding: 5px 15px;
+  &__list {
+    .ant-col {
+      padding: 15px !important;
+    }
+  }
+
+  &__card {
+    border: 0;
+    background-color: $background-dark-light-web;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.75);
+
+    .ant-card-body {
+      text-align: center;
+
+      .ant-card-meta-title,
+      .ant-card-meta-description {
+        color: $font-light;
+      }
+
+      .ant-card-meta-title {
+        font-weight: bold;
+      }
     }
 
-    .ant-list-item-meta-title {
-      color: $font-light;
-      font-size: 16px;
-      &:hover {
-        color: $primary-color-dark;
+    .ant-card-actions {
+      background-color: transparent;
+      border: 0;
+
+      button {
+        width: 90%;
+        height: 35px;
+        background-color: transparent;
+        color: $font-light;
+        border: 1px solid $primary-color;
       }
     }
   }

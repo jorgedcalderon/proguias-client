@@ -10,12 +10,16 @@ import "./RegisterForm.scss";
 
 export default function RegisterForm() {
   const [inputs, setInputs] = useState({
+    name: "",
+    lastName: "",
     email: "",
     password: "",
     repeatPassword: "",
     privacyPolicy: false
   });
   const [formValid, setFormValid] = useState({
+    name: false,
+    lastName: false,
     email: false,
     password: false,
     repeatPassword: false,
@@ -39,6 +43,12 @@ export default function RegisterForm() {
   const inputValidation = e => {
     const { type, name } = e.target;
 
+    if (type === "name") {
+      setFormValid({ ...formValid, [name]: minLengthValidation(e.target, 4)});
+    }
+    if (type === "lastName") {
+      setFormValid({ ...formValid, [name]: minLengthValidation(e.target, 4)});
+    }
     if (type === "email") {
       setFormValid({ ...formValid, [name]: emailValidation(e.target) });
     }
@@ -53,12 +63,14 @@ export default function RegisterForm() {
   const register = async e => {
     e.preventDefault();
 
+    const nameVal = inputs.name;
+    const lastNameVal = inputs.lastName;
     const emailVal = inputs.email;
     const passwordVal = inputs.password;
     const repeatPasswordVal = inputs.repeatPassword;
     const privacyPolicyVal = inputs.privacyPolicy;
 
-    if (!emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal) {
+    if (!nameVal || !lastNameVal || !emailVal || !passwordVal || !repeatPasswordVal || !privacyPolicyVal) {
       notification["error"]({
         message: "Todos los campos son obligatorios"
       });
@@ -92,6 +104,8 @@ export default function RegisterForm() {
     }
 
     setInputs({
+      name: "",
+      lastName: "",
       email: "",
       password: "",
       repeatPassword: "",
@@ -99,6 +113,8 @@ export default function RegisterForm() {
     });
 
     setFormValid({
+      name: false,
+      lastName: false,
       email: false,
       password: false,
       repeatPassword: false,
@@ -108,6 +124,28 @@ export default function RegisterForm() {
 
   return (
     <Form className="register-form" onSubmit={register} onChange={changeForm}>
+      <Form.Item>
+        <Input
+          prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+          type="name"
+          name="name"
+          placeholder="Nombre"
+          className="register-form__input"
+          onChange={inputValidation}
+          value={inputs.name}
+        />
+      </Form.Item>
+      <Form.Item>
+        <Input
+          prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+          type="lastName"
+          name="lastName"
+          placeholder="Apellido"
+          className="register-form__input"
+          onChange={inputValidation}
+          value={inputs.lastName}
+        />
+      </Form.Item>
       <Form.Item>
         <Input
           prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}

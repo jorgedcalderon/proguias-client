@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Spin, notification } from "antd";
+import { Spin, notification, Row, Col, Card, Button } from "antd";
 import { Helmet } from "react-helmet";
 import moment from "moment";
 import { getGuiaApi } from "../../../../api/guia";

@@ -28,25 +28,17 @@ import Error404 from "../pages/Error404";
 
 const routes = [
   {
-    path: "/guia",
+    path: "/guia-admin",
     component: LayoutGuia,
     exact: false,
     routes: [
-      {
-        path: "/guia",
-        component: GuiaHome,
-        exact: true
-      },
+      
       {
         path: "/guia/login",
         component: GuiaSingIn,
         exact: true
-      },
-      {
-        path: "/guia/:url",
-        component: Guias,
-        exact: true
       }
+      
     ]
   },
   {
@@ -122,6 +114,16 @@ const routes = [
       {
         path: "/blog/:url",
         component: Blog,
+        exact: true
+      },
+      {
+        path: "/guia",
+        component: GuiaHome,
+        exact: true
+      },
+      {
+        path: "/guia/:url",
+        component: Guias,
         exact: true
       },
       {
