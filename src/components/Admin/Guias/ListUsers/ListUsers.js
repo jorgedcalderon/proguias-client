@@ -13,7 +13,7 @@ import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm";
 import AddUserForm from "../AddUserForm";
 import {
-  getAvatarApi,
+  getAvatarGuiaApi,
   activateGuiaApi,
   deleteGuiaApi
 } from "../../../../api/guia";
@@ -131,7 +131,7 @@ function UserActive(props) {
 
   useEffect(() => {
     if (user.avatar) {
-      getAvatarApi(user.avatar).then(response => {
+      getAvatarGuiaApi(user.avatar).then(response => {
         setAvatar(response);
       });
     } else {
@@ -140,9 +140,9 @@ function UserActive(props) {
   }, [user]);
 
   const desactivateUser = () => {
-    const accesToken = getAccessTokenApi();
+    const accessToken = getAccessTokenApi();
 
-    activateGuiaApi(accesToken, user._id, false)
+    activateGuiaApi(accessToken, user._id, false)
       .then(response => {
         notification["success"]({
           message: response
@@ -229,7 +229,7 @@ function UserInactive(props) {
 
   useEffect(() => {
     if (user.avatar) {
-      getAvatarApi(user.avatar).then(response => {
+      getAvatarGuiaApi(user.avatar).then(response => {
         setAvatar(response);
       });
     } else {

@@ -17,8 +17,8 @@ export default function LayoutGuia(props) {
   if (!user && !isLoading) {
     return (
       <>
-        <Route path="/guia/login" component={GuiaSignIn} />
-        <Redirect to="/guia/login" />
+        <Route path="/guia-admin/login" component={GuiaSignIn} />
+        <Redirect to="/guia-admin/login" />
       </>
     );
   }

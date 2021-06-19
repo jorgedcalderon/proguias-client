@@ -15,6 +15,7 @@ import AdminGuias from "../pages/Admin/Guias"
 // Guia Pages
 import GuiaHome from "../pages/Guia";
 import GuiaSingIn from "../pages/Guia/SignInGuia";
+import GuiaPerfil from "../pages/Guia/Perfil"
 
 // Pages
 import Home from "../pages/Home";
@@ -34,8 +35,13 @@ const routes = [
     routes: [
       
       {
-        path: "/guia/login",
+        path: "/guia-admin/login",
         component: GuiaSingIn,
+        exact: true
+      },
+      {
+        path: "/guia-admin/perfil",
+        component: GuiaPerfil,
         exact: true
       }
       

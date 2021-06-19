@@ -13,7 +13,7 @@ export default function SignIn() {
   const { TabPane } = Tabs;
 
   if (getAccessTokenApi()) {
-    return <Redirect to="/guia" />;
+    return <Redirect to="/guia-admin" />;
   }
   return (
     <Layout className="sign-in">

@@ -73,8 +73,8 @@ export function getGuiasActiveApi(token, status) {
     });
 }
 
-export function uploadAvatarApi(token, avatar, userId) {
-  const url = `${basePath}/${apiVersion}/upload-avatar/${userId}`;
+export function uploadAvatarGuiaApi(token, avatar, userId) {
+  const url = `${basePath}/${apiVersion}/upload-avatar-guia/${userId}`;
 
   const formData = new FormData();
   formData.append("avatar", avatar, avatar.name);
@@ -99,8 +99,8 @@ export function uploadAvatarApi(token, avatar, userId) {
     });
 }
 
-export function getAvatarApi(avatarName) {
-  const url = `${basePath}/${apiVersion}/get-avatar/${avatarName}`;
+export function getAvatarGuiaApi(avatarName) {
+  const url = `${basePath}/${apiVersion}/get-avatar-guia/${avatarName}`;
 
   return fetch(url)
     .then(response => {

@@ -14,7 +14,7 @@ function MenuSider(props) {
         // theme="dark"
         mode="inline"
         // defaultSelectedKeys={[location.pathname]}
-        defaultSelectedKeys={["/guia/home"]}
+        defaultSelectedKeys={["/guia-admin/perfil"]}
       >
         {/* <Menu.Item key="/admin">
           <Link to="/admin">
@@ -22,8 +22,8 @@ function MenuSider(props) {
             <span className="nav-text">Home</span>
           </Link>
         </Menu.Item> */}
-        <Menu.Item key="/guia/perfil">
-          <Link to="/guia/perfil">
+        <Menu.Item key="/guia-admin/perfil">
+          <Link to="/guia-admin/perfil">
             <Icon type="user" />
             <span className="nac-text">Mi Perfil</span>
           </Link>

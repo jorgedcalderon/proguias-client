@@ -14,8 +14,8 @@ import { useDropzone } from "react-dropzone";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import {
   updateGuiaApi,
-  uploadAvatarApi,
-  getAvatarApi
+  uploadAvatarGuiaApi,
+  getAvatarGuiaApi
 } from "../../../../api/guia";
 import { getAccessTokenApi } from "../../../../api/auth";
 
@@ -38,7 +38,7 @@ export default function EditUserForm(props) {
 
   useEffect(() => {
     if (user.avatar) {
-      getAvatarApi(user.avatar).then(response => {
+      getAvatarGuiaApi(user.avatar).then(response => {
         setAvatar(response);
       });
     } else {
@@ -77,7 +77,7 @@ export default function EditUserForm(props) {
     }
 
     if (typeof userUpdate.avatar === "object") {
-      uploadAvatarApi(token, userUpdate.avatar, user._id).then(response => {
+      uploadAvatarGuiaApi(token, userUpdate.avatar, user._id).then(response => {
         userUpdate.avatar = response.avatarName;
         updateGuiaApi(token, userUpdate, user._id).then(result => {
           notification["success"]({

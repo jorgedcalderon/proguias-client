@@ -35,7 +35,7 @@ export default function LoginForm() {
         message: "Login correcto."
       });
 
-      window.location.href = "/guia";
+      window.location.href = "/guia-admin";
     }
 
     console.log(result);
