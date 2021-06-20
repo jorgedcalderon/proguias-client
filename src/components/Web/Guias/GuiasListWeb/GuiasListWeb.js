@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Spin, List, notification, Row, Col, Card, Button } from "antd";
+import { Spin, List, notification, Row, Col, Card, Button, Avatar } from "antd";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import moment from "moment";
 import queryString from "query-string";
 import Pagination from "../../../Pagination";
 // getguiasapi
-import { getGuiasPagApi } from "../../../../api/guia";
+import { getGuiasPagApi, getAvatarGuiaApi } from "../../../../api/guia";
 import "moment/locale/es";
 
 import imagen from "../../../../assets/img/jpg/curso-uno.jpg"
+import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 
 import "./GuiasListWeb.scss";
 
@@ -68,9 +69,18 @@ export default function GuiasListWeb(props) {
 function Guia(props) {
   const { guia } = props;
   const { Meta } = Card;
-  const guiaUrl = `/guia/${guia.url}`
-  // const day = moment(post.date).format("DD");
-  // const month = moment(post.date).format("MMMM");
+  const [avatar, setAvatar] = useState(null);
+  const guiaUrl = `/guia/${guia.url}`;
+
+  useEffect(() => {
+    if(guia.avatar) {
+      getAvatarGuiaApi(guia.avatar).then(response => {
+        setAvatar(response);
+      });
+    } else {
+      setAvatar(null);
+    }
+  }, [guia]);
 
   return (
               <Col md={12}>
@@ -78,7 +88,8 @@ function Guia(props) {
                 <Card
                   className="guias-list-web__card"
                   // cover={<img src={image} alt={title} />}
-                  cover={<img src={imagen} alt={guia.name} />}
+                  cover={<img src={avatar ? avatar : NoAvatar} alt={guia.name} />}
+                  // cover={<Avatar size={250} src={avatar ? avatar : NoAvatar} />}
                   actions={[<Button>Ver más</Button>]}
                 >
                 <Meta title={`Nombre: ${guia.name} ${guia.lastname}`} description={`Experiencia: 7 años Registro en Sernatour: Vigente`} />
@@ -88,6 +99,7 @@ function Guia(props) {
                 
   );
 }
+
 
 
 

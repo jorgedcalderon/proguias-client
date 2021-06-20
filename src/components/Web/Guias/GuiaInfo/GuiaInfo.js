@@ -34,7 +34,6 @@ export default function GuiaInfo(props) {
     if (guiaInfo.avatar) {
       getAvatarGuiaApi(guiaInfo.avatar).then(response => {
         setAvatar(response);
-        console.log(guiaInfo);
       });
     } else {
       setAvatar(null);
@@ -54,7 +53,7 @@ export default function GuiaInfo(props) {
         <title>{guiaInfo.name} | Pro Guias San Pedro</title>
       </Helmet> */}
       <div className="guia-info">
-        <Avatar size={150} src={avatar ? avatar : NoAvatar} />
+        <Avatar size={250} src={avatar ? avatar : NoAvatar} />
         <h1 className="guia-info__title">{guiaInfo.name} {guiaInfo.lastname}</h1>
         <h3>Experiencia: <span>7 años</span></h3>
         <h3>Idiomas: <span>Inglés, Español, Frances</span></h3>
