@@ -246,6 +246,21 @@ export function getGuiaApi(urlGuia) {
     });
 }
 
+export function getGuiaEmailApi(emailGuia) {
+  const url = `${basePath}/${apiVersion}/get-guia-email/${emailGuia}`;
+
+  return fetch(url)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err;
+    });
+}
+
 export function getGuiasPagApi(limit, page) {
   const url = `${basePath}/${apiVersion}/get-guias-pag?limit=${limit}&page=${page}`;
 

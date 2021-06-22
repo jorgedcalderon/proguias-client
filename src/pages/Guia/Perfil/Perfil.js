@@ -1,9 +1,12 @@
 import React, { useState, useEffect} from "react";
-import { Spin, notification, Avatar } from "antd";
-import { getGuiaApi, getAvatarGuiaApi } from "../../../api/guia";
+import { Button, Icon,  Spin, notification, Avatar, Modal as ModalAntd } from "antd";
+import { getGuiaEmailApi, getAvatarGuiaApi } from "../../../api/guia";
 import useAuth from "../../../hooks/useAuth";
-
+import Modal from "../../../components/Modal";
+//editguiaform
+import EditGuiaForm from "../../../components/Admin/Guias/EditUserForm";
 import NoAvatar from "../../../assets/img/png/no-avatar.png";
+//import getavatar, activate
 
 import "./Perfil.scss";
 
@@ -14,7 +17,7 @@ export default function Perfil(props){
     console.log(user);
 
     useEffect(() => {
-        getGuiaApi(user.url)
+        getGuiaEmailApi(user.email)
           .then(response => {
             if (response.code !== 200) {
               notification["warning"]({
@@ -32,8 +35,8 @@ export default function Perfil(props){
       }, [user]);
 
     useEffect(() => {
-        if (user.avatar) {
-          getAvatarGuiaApi(user.avatar).then(response => {
+        if (guia.avatar) {
+          getAvatarGuiaApi(guia.avatar).then(response => {
             setAvatar(response);
           });
         } else {
@@ -41,13 +44,31 @@ export default function Perfil(props){
         }
       }, [guia]);
 
-      if (!guia && !user.url) {
+      if (!user) {
         return (
-          <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
+          <Spin tip="No se encuentra el guía" style={{ width: "100%", padding: "200px 0" }} />
         );
       }
 
     return(
-        <h1>Mi perfil</h1>
+        <div className="perfil">
+          <div className="perfil__boton">
+            <Button type="primary">
+              <Icon type="edit" />
+            </Button>
+          </div>
+          <Avatar size={250} src={avatar ? avatar : NoAvatar} />
+          <h1 className="perfil__name">{guia.name} {guia.lastname}</h1>
+          <h3>Idiomas</h3>
+          <h4>Inglés, Español, Frances</h4>
+          <div className="perfil__competencia">
+            <h2>Competencias</h2>
+            <h3>Registro en Sernatour</h3>
+            <p>Vigente hasta: <span>aaa</span></p>
+          </div>
+
+        </div>
     );
 }
+
+// onClick={() => editUser(user)}

@@ -25,6 +25,7 @@ export default function EditUserForm(props) {
   const { user, setIsVisibleModal, setReloadUsers } = props;
   const [avatar, setAvatar] = useState(null);
   const [userData, setUserData] = useState({});
+  console.log(user);
 
   useEffect(() => {
     setUserData({
@@ -32,7 +33,12 @@ export default function EditUserForm(props) {
       lastname: user.lastname,
       email: user.email,
       role: user.role,
-      avatar: user.avatar
+      avatar: user.avatar,
+      expe: user.expe,
+      licencia: user.licencia,
+      idiomas: user.idiomas,
+      fono: user.fono,
+      url: user.url
     });
   }, [user]);
 
@@ -69,9 +75,9 @@ export default function EditUserForm(props) {
       }
     }
 
-    if (!userUpdate.name || !userUpdate.lastname || !userUpdate.email) {
+    if (!userUpdate.name || !userUpdate.lastname || !userUpdate.email || !userUpdate.password ) {
       notification["error"]({
-        message: "El nombre, apellidos y email son obligatorios."
+        message: "El nombre, apellidos, email y las contraseñas son obligatorios."
       });
       return;
     }
@@ -204,9 +210,64 @@ function EditForm(props) {
               value={userData.role}
             >
               <Option value="admin">Administrador</Option>
-              <Option value="editor">Editor</Option>
-              <Option value="reviewr">Revisor</Option>
+              <Option value="guia-pro">Guia profesional</Option>
+              <Option value="guia-regular">Guia regular</Option>
             </Select>
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<Icon type="user" />}
+              placeholder="Idiomas"
+              onChange={e =>
+              setUserData({...userData, idiomas: e.target.value })
+              }
+              value={userData.idiomas}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<Icon type="user" /> }
+              type="number"
+              placeholder="Experiencia"
+              onChange={e =>
+              setUserData({ ...userData, expe: e.target.value })
+              }
+              value={userData.expe}
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
+      <Row gutter={24}>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<Icon type="user" /> }
+              placeholder="Teléfono"
+              onChange={e => 
+              setUserData({ ...userData, fono: e.target.value })
+              }
+              value={userData.fono}
+              />
+          </Form.Item>
+        </Col>
+        <Col span={12}>
+          <Form.Item>
+            <Input
+              prefix={<Icon type="user" /> }
+              placeholder="Usuario"
+              onChange={e =>
+              setUserData({ ...userData, url: e.target.value })
+              }
+              value={userData.url}
+            />
           </Form.Item>
         </Col>
       </Row>
