@@ -13,8 +13,8 @@ function MenuSider(props) {
       <Menu
         // theme="dark"
         mode="inline"
-        // defaultSelectedKeys={[location.pathname]}
-        defaultSelectedKeys={["/guia-admin/perfil"]}
+         defaultSelectedKeys={[location.pathname]}
+        // defaultSelectedKeys={["/guia-admin/perfil"]}
       >
         {/* <Menu.Item key="/admin">
           <Link to="/admin">
@@ -26,6 +26,12 @@ function MenuSider(props) {
           <Link to="/guia-admin/perfil">
             <Icon type="user" />
             <span className="nac-text">Mi Perfil</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/guia-admin/competencias">
+          <Link to="/guia-admin/competencias">
+            <Icon type="user" />
+            <span className="nac-text">Competencias</span>
           </Link>
         </Menu.Item>
         

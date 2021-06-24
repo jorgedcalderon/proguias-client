@@ -15,7 +15,8 @@ import AdminGuias from "../pages/Admin/Guias"
 // Guia Pages
 import GuiaHome from "../pages/Guia";
 import GuiaSingIn from "../pages/Guia/SignInGuia";
-import GuiaPerfil from "../pages/Guia/Perfil"
+import GuiaPerfil from "../pages/Guia/Perfil";
+import GuiaCompetencias from "../pages/Guia/Competencias";
 
 // Pages
 import Home from "../pages/Home";
@@ -42,6 +43,11 @@ const routes = [
       {
         path: "/guia-admin/perfil",
         component: GuiaPerfil,
+        exact: true
+      },
+      {
+        path: "guia-admin/competencias",
+        component: GuiaCompetencias,
         exact: true
       }
       

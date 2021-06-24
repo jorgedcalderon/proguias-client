@@ -1,20 +1,28 @@
-import React from "react";
-import { getAccessTokenApi } from "../../../api/auth";
+import React, { useState, useEffect} from "react";
+import { getCompesApi } from "../../../api/competencias";
+import ListaCompetencias from "../../../components/Guias/ListaCompetencias";
+import { Spin } from "antd";
+import useAuth from "../../../hooks/useAuth";
 
 import "./Competencias.scss";
 
 export default function Competencias() {
-    const [compeActiva, setCompeActiva] = useState([]);
-    const [compeInactiva, setCompeInactiva] = useState([]);
+    const [compe, setCompe] = useState([]);
     const [reloadCompe, setReloadCompe] = useState(false);
-    const token = getAccessTokenApi();
+    const { isLoading } = useAuth();
+    
 
     useEffect(() => {
-        //getCompeActive
-        //getCompeInactive
-    }, [token, reloadCompe]);
+        getCompesApi()
+        .then(response => {
+          setCompe(response.compe);
+        });
+        setReloadCompe(false);
+      }, [reloadCompe]);
 
     return(
-        <h1>Page Competencias</h1>
+        <div className="competencias">
+            <ListaCompetencias compe={compe} setReloadCompe={setReloadCompe} />
+        </div>
     );
 }

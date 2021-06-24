@@ -3,7 +3,6 @@ import { getAvatarGuiaApi } from "../../../api/guia";
 import { Spin, notification, Row, Col, Avatar, Button, Modal as ModalAntd} from "antd";
 import Modal from "../../Modal";
 import EditCompetenciaForm from "../EditCompetenciaForm";
-import ListaCompetencias from "../ListaCompetencias";
 
 import NoAvatar from "../../../assets/img/png/no-avatar.png";
 import "./GuiaInfoAdmin.scss";
@@ -53,9 +52,7 @@ export default function GuiaInfoAdmin(props) {
                     Editar guia
                 </Button>
             </Row>
-            <Row>
-                <ListaCompetencias />
-            </Row>
+        
 
             <Modal
                 title={modalTitle}
