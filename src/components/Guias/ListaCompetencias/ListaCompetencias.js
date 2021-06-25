@@ -20,20 +20,19 @@ export default function ListaCompetencias(props) {
 
     useEffect(() => {
         const listItemsArray = [];
-        console.log(compe);
-        // compe.forEach(item => {
-        //     listItemsArray.push({
-        //         content: (
-        //             <CompeItem
-        //                 item={item}
-        //                 activateCompe={activateCompe}
-        //                 editCompeModal={editCompeModal}
-        //                 deleteCompe={deleteCompe}
-        //             />
-        //         )
-        //     });
-        // });
-        // setListItems(listItemsArray);
+        compe.forEach(item => {
+            listItemsArray.push({
+                content: (
+                    <CompeItem
+                        item={item}
+                        activateCompe={activateCompe}
+                        editCompeModal={editCompeModal}
+                        deleteCompe={deleteCompe}
+                    />
+                )
+            });
+        });
+        setListItems(listItemsArray);
     }, [compe]);
 
     const activateCompe = (compe, status) => {
@@ -134,7 +133,7 @@ function CompeItem(props) {
         <List.Item
             actions={[
                 <Switch
-                    defaultChecked={item.active}
+                    defaultChecked={item.activa}
                     onChange={e => activateCompe(item, e)}
                 />,
                 <Button type="primary" onClick={() => editCompeModal (item)} >

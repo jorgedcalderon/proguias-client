@@ -46,7 +46,7 @@ const routes = [
         exact: true
       },
       {
-        path: "guia-admin/competencias",
+        path: "/guia-admin/competencias",
         component: GuiaCompetencias,
         exact: true
       }

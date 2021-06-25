@@ -42,7 +42,7 @@ export function activateCompeApi(token, compeId, status) {
           "Content-Type": "application/json",
           Authorization: token
         },
-        body: JSON.stringify({ active: status })
+        body: JSON.stringify({ activa: status })
       };
 
       return fetch(url, params)
@@ -82,7 +82,7 @@ export function addCompeApi(token, compe) {
   }
   
   export function deleteCompeApi(token, compeId) {
-    const url = `${basePath}/${apiVersion}/delete-menu/${compeId}`;
+    const url = `${basePath}/${apiVersion}/delete-compe/${compeId}`;
   
     const params = {
       method: "DELETE",

@@ -25,13 +25,13 @@ function MenuSider(props) {
         <Menu.Item key="/guia-admin/perfil">
           <Link to="/guia-admin/perfil">
             <Icon type="user" />
-            <span className="nac-text">Mi Perfil</span>
+            <span className="nav-text">Mi Perfil</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/guia-admin/competencias">
           <Link to="/guia-admin/competencias">
             <Icon type="user" />
-            <span className="nac-text">Competencias</span>
+            <span className="nav-text">Competencias</span>
           </Link>
         </Menu.Item>
         
