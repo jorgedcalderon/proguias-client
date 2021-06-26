@@ -4,7 +4,7 @@ import Modal from "../../Modal";
 import DragSortableList from "react-drag-sortable";
 import { updateCompeApi, activateCompeApi, deleteCompeApi } from "../../../api/competencias";
 import { getAccessTokenApi } from "../../../api/auth";
-// import AddCompetenciaForm from "../AddCompetenciaForm";
+import AddCompetenciaForm from "../AddCompetenciaForm";
 import EditCompetenciaForm from "../EditCompetenciaForm";
 
 import "./ListaCompetencias.scss";
@@ -55,7 +55,16 @@ export default function ListaCompetencias(props) {
         });
     };
 
-   
+    const addCompeModal = () => {
+        setIsVisibleModal(true);
+        setModalTitle("Creando nueva competencia:");
+        setModalContent(
+            <AddCompetenciaForm
+                setIsVisibleModal={setIsVisibleModal}
+                setReloadCompe={setReloadCompe}
+            />
+        );
+    };
 
     const deleteCompe = compe => {
         const accessToken = getAccessTokenApi();
@@ -95,7 +104,11 @@ export default function ListaCompetencias(props) {
     
     return (
         <div className="lista-competencias">
-            
+            <div className="lista-competencias__header">
+                <Button type="primary" onClick={addCompeModal} >
+                    Crear competencia
+                </Button>
+            </div>
 
             <div className="lista-competencias__items">
                 <DragSortableList items={listItems} onSort={onSort}
@@ -135,20 +148,3 @@ function CompeItem(props) {
         </List.Item>
     );
 }
-
-{/* <div className="lista-competencias__header">
-                <Button type="primary" onClick={addCompeModal} >
-                    Crear competencia
-                </Button>
-            </div> */}
-
-            // const addCompeModal = () => {
-            //     setIsVisibleModal(true);
-            //     setModalTitle("Creando nueva competencia:");
-            //     setModalContent(
-            //         <AddCompetenciaForm
-            //             setIsVisibleModal={setIsVisibleModal}
-            //             setReloadCompe={setReloadCompe}
-            //         />
-            //     );
-            // };

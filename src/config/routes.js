@@ -11,6 +11,7 @@ import AdminMenuWeb from "../pages/Admin/MenuWeb";
 import AdminCourses from "../pages/Admin/Courses";
 import AdminBlog from "../pages/Admin/Blog";
 import AdminGuias from "../pages/Admin/Guias"
+import AdminCompetencias from "../pages/Admin/Competencias";
 
 // Guia Pages
 import GuiaHome from "../pages/Guia";
@@ -91,6 +92,11 @@ const routes = [
       {
         path: "/admin/guias",
         component: AdminGuias,
+        exact: true
+      },
+      {
+        path: "/admin/competencias",
+        component: AdminCompetencias,
         exact: true
       },
       {

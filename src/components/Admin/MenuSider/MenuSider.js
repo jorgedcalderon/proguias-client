@@ -25,31 +25,37 @@ function MenuSider(props) {
         <Menu.Item key="/admin/users">
           <Link to="/admin/users">
             <Icon type="user" />
-            <span className="nac-text">Usuarios</span>
+            <span className="nav-text">Usuarios</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/admin/menu">
           <Link to="/admin/menu">
             <Icon type="menu" />
-            <span className="nac-text">Menú</span>
+            <span className="nav-text">Menú</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/admin/courses">
           <Link to="/admin/courses">
             <Icon type="book" />
-            <span className="nac-text">Cursos</span>
+            <span className="nav-text">Cursos</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/admin/blog">
           <Link to="/admin/blog">
             <Icon type="message" />
-            <span className="nac-text">Blog</span>
+            <span className="nav-text">Blog</span>
           </Link>
         </Menu.Item>
         <Menu.Item key="/admin/guias">
           <Link to="/admin/guias">
             <Icon type="user" />
-            <span className="nac-text">Guias</span>
+            <span className="nav-text">Guias</span>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="/admin/competencias">
+          <Link to="/admin/competencias">
+            <Icon type="user" />
+            <span className="nav-text">Competencias</span>
           </Link>
         </Menu.Item>
         
