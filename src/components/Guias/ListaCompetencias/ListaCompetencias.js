@@ -8,7 +8,7 @@ import { getAccessTokenApi } from "../../../api/auth";
 import EditCompetenciaForm from "../EditCompetenciaForm";
 
 import "./ListaCompetencias.scss";
-import { updateMenuApi } from "../../../api/menu";
+
 const { confirm } = ModalAntd;
 
 export default function ListaCompetencias(props) {
@@ -51,7 +51,7 @@ export default function ListaCompetencias(props) {
         sortedList.forEach(item => {
             const { _id } = item.content.props.item;
             const order = item.rank;
-            updateMenuApi(accessToken, _id, {order });
+            updateCompeApi(accessToken, _id, {order });
         });
     };
 

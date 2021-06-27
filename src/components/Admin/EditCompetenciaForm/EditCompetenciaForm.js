@@ -4,7 +4,6 @@ import { updateCompeApi } from "../../../api/competencias";
 import { getAccessTokenApi } from "../../../api/auth";
 
 import "./EditCompetenciaForm.scss";
-import EditMenuWebForm from "../MenuWeb/EditMenuWebForm/EditMenuWebForm";
 
 export default function EditCompetenciaForm(props) {
     const { setIsVisibleModal, setReloadCompe, compe } = props;
@@ -40,17 +39,17 @@ export default function EditCompetenciaForm(props) {
     };
 
     return (
-        <div className="edit-menu-web-form">
-            <EditMenuWebForm
+        <div className="edit-compe-form">
+            <EditForm
              compeData={compeData}
              setCompeData={setCompeData}
-             editMenu={editMenu}
+             editCompe={editCompe}
             />
         </div>
     );
 }
 
-funtion EditMenuWebForm(props) {
+function EditForm(props) {
     const { compeData, setCompeData, editCompe } = props;
 
     return (
@@ -77,7 +76,7 @@ funtion EditMenuWebForm(props) {
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" className="btn-submit">
-            Actualizar menú
+            Actualizar
           </Button>
         </Form.Item>
       </Form>

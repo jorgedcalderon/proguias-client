@@ -3,8 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/helper-builder-react-jsx": "^7.14.5",
+    "@babel/helper-call-delegate": "^7.12.13",
+    "@babel/helper-define-map": "^7.14.5",
+    "@babel/helper-regex": "^7.10.5",
     "@tinymce/tinymce-react": "^3.3.2",
     "antd": "^3.23.2",
+    "babel": "^6.23.0",
     "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
     "node-sass": "^4.12.0",
