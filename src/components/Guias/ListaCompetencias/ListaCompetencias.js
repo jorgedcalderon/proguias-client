@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Switch, List, Button, Icon, Modal as ModalAntd, notification } from "antd";
-import Modal from "../../Modal";
 import DragSortableList from "react-drag-sortable";
-import { updateCompeApi, activateCompeApi, deleteCompeApi } from "../../../api/competencias";
+import { Switch, List, Button, Icon, Modal as ModalAntd, notification } from "antd";
+
+import { asignarCompeApi } from "../../../api/guia";
 import { getAccessTokenApi } from "../../../api/auth";
-// import AddCompetenciaForm from "../AddCompetenciaForm";
+import { updateCompeApi, activateCompeApi, deleteCompeApi } from "../../../api/competencias";
+
 import EditCompetenciaForm from "../EditCompetenciaForm";
+import VerCompetencia from "../VerCompetencia";
+
+import Modal from "../../Modal";
 
 import "./ListaCompetencias.scss";
 
 const { confirm } = ModalAntd;
 
 export default function ListaCompetencias(props) {
-    const { compe, setReloadCompe } = props;
+    const { compe, setReloadCompe, user } = props;
     const [listItems, setListItems] = useState([]);
     const [isVisibleModal, setIsVisibleModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
@@ -25,9 +29,9 @@ export default function ListaCompetencias(props) {
                 content: (
                     <CompeItem
                         item={item}
-                        activateCompe={activateCompe}
-                        editCompeModal={editCompeModal}
-                        deleteCompe={deleteCompe}
+                        asignarCompe={asignarCompe}
+                        addPdfCompe={addPdfCompe}
+                        verCompe={verCompe}
                     />
                 )
             });
@@ -35,10 +39,10 @@ export default function ListaCompetencias(props) {
         setListItems(listItemsArray);
     }, [compe]);
 
-    const activateCompe = (compe, status) => {
+    const asignarCompe = (user, compe) => {
         const accessToken = getAccessTokenApi();
 
-        activateCompeApi(accessToken, compe._id, status).then(response => {
+        asignarCompeApi(accessToken, user,  compe._id).then(response => {
             notification["success"]({
                 message: response
             });
@@ -57,33 +61,23 @@ export default function ListaCompetencias(props) {
 
    
 
-    const deleteCompe = compe => {
+    const verCompe = compe => {
         const accessToken = getAccessTokenApi();
 
-        confirm({
-            title: "Eliminar competencia",
-            content: `¿Estas seguro de que quieres eliminar la competencia ${compe.name}?`,
-            okText: "Eliminar",
-            okType: "danger",
-            cancelText: "Cancelar",
-            onOk() {
-                deleteCompeApi(accessToken, compe._id).then( response => {
-                    notification["success"]({
-                        message: response
-                    });
-                    setReloadCompe(true);
-                }).catch(() => {
-                    notification["error"]({
-                        message: "Error del servidor."
-                    });
-                });
-            }
-        });
+        setIsVisibleModal(true);
+        setModalTitle(`Competencia: ${compe.name}`);
+        setModalContent (
+            <VerCompetencia
+                setIsVisibleModal={setIsVisibleModal}
+                setReloadCompe={setReloadCompe}
+                compe={compe}
+            />
+        );
     };
 
-    const editCompeModal = compe => {
+    const addPdfCompe = compe => {
         setIsVisibleModal(true);
-        setModalTitle(`Editando: ${compe.name}`);
+        setModalTitle(`Agrega los documentos de: ${compe.name}`);
         setModalContent (
             <EditCompetenciaForm
                 setIsVisibleModal={setIsVisibleModal}
@@ -114,20 +108,21 @@ export default function ListaCompetencias(props) {
 }
 
 function CompeItem(props) {
-    const { item, activateCompe, editCompeModal, deleteCompe } = props;
+    const { item, asignarCompe, addPdfCompe, verCompe } = props;
+    console.log(item.certs.0.activa);
 
     return (
         <List.Item
             actions={[
                 <Switch
-                    defaultChecked={item.activa}
-                    onChange={e => activateCompe(item, e)}
+                    defaultChecked={false}
+                    onChange={e => asignarCompe(item, e)}
                 />,
-                <Button type="primary" onClick={() => editCompeModal (item)} >
+                <Button type="primary" onClick={() => addPdfCompe (item)} >
                     <Icon type="edit" />
                 </Button>,
-                <Button type="danger" onClick={() => deleteCompe(item)} >
-                    <Icon type="delete" />
+                <Button type="primary" onClick={() => verCompe(item)} >
+                    <Icon type="eye" />
                 </Button>
             ]}
         >

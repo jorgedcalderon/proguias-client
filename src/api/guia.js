@@ -276,3 +276,31 @@ export function getGuiasPagApi(limit, page) {
     });
 }
 
+export function asignarCompeApi(token, userId, compe) {
+  
+  const url = `${basePath}/${apiVersion}/add-guia-compe/${userId}`;
+
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    body: JSON.stringify({
+      compe: compe
+    })
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result.message;
+    })
+    .catch(err => {
+      return err.message;
+    });
+
+}
+
