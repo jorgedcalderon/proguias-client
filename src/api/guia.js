@@ -276,7 +276,7 @@ export function getGuiasPagApi(limit, page) {
     });
 }
 
-export function asignarCompeApi(token, userId, compe) {
+export function asignarCompeApi(token, userId, idCompe) {
   
   const url = `${basePath}/${apiVersion}/add-guia-compe/${userId}`;
 
@@ -287,7 +287,7 @@ export function asignarCompeApi(token, userId, compe) {
       Authorization: token
     },
     body: JSON.stringify({
-      compe: compe
+      idCompe: idCompe
     })
   };
 
@@ -302,5 +302,31 @@ export function asignarCompeApi(token, userId, compe) {
       return err.message;
     });
 
+}
+
+export function findCompeApi(token, id, idCompe) {
+  const url = `${basePath}/${apiVersion}/find-compe/${id}`;
+
+  const params = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    body: JSON.stringify({
+      idCompe: idCompe
+    })
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err.message;
+    });
 }
 

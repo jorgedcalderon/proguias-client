@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import DragSortableList from "react-drag-sortable";
-import { Switch, List, Button, Icon, Modal as ModalAntd, notification } from "antd";
+import { Spin, Switch, List, Button, Icon, Modal as ModalAntd, notification } from "antd";
 
-import { asignarCompeApi } from "../../../api/guia";
+import { asignarCompeApi, findCompeApi } from "../../../api/guia";
 import { getAccessTokenApi } from "../../../api/auth";
 import { updateCompeApi, activateCompeApi, deleteCompeApi } from "../../../api/competencias";
 
@@ -16,11 +16,13 @@ import "./ListaCompetencias.scss";
 const { confirm } = ModalAntd;
 
 export default function ListaCompetencias(props) {
-    const { compe, setReloadCompe, user } = props;
+    const { compe, setReloadCompe, guia } = props;
     const [listItems, setListItems] = useState([]);
     const [isVisibleModal, setIsVisibleModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState(null);
+    
+    
 
     useEffect(() => {
         const listItemsArray = [];
@@ -32,6 +34,7 @@ export default function ListaCompetencias(props) {
                         asignarCompe={asignarCompe}
                         addPdfCompe={addPdfCompe}
                         verCompe={verCompe}
+                        guia={guia}
                     />
                 )
             });
@@ -39,14 +42,37 @@ export default function ListaCompetencias(props) {
         setListItems(listItemsArray);
     }, [compe]);
 
-    const asignarCompe = (user, compe) => {
+    const asignarCompe = (i, g, e) => {
         const accessToken = getAccessTokenApi();
-
-        asignarCompeApi(accessToken, user,  compe._id).then(response => {
-            notification["success"]({
-                message: response
+        const guia  = g;
+        const item = i;
+        
+        if(e === true){
+            asignarCompeApi(accessToken, guia._id, item._id).then( response => {
+                console.log(response);
+                // const typeNotification = response.status === 200 ? "success" : "warning";
+                // notification[typeNotification]({
+                //     message: response.message
+                // });
             });
-        });
+        } else if (e === false) {
+            console.log("falso es");
+        }
+
+        
+
+        // asignarCompeApi(accessToken, user,  compe._id).then(response => {
+        //     notification["success"]({
+        //         message: response
+        //     });
+        // });
+
+    //     updatePostApi(token, post._id, postData)
+    //   .then(response => {
+    //     const typeNotification = response.code === 200 ? "success" : "warning";
+    //     notification[typeNotification]({
+    //       message: response.message
+    //     });
     };
 
     const onSort = (sortedList, dropEvent) => {
@@ -86,6 +112,12 @@ export default function ListaCompetencias(props) {
             />
         );
     };
+
+    if (!guia) {
+        return (
+          <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
+        );
+      }
     
     return (
         <div className="lista-competencias">
@@ -107,16 +139,17 @@ export default function ListaCompetencias(props) {
     );
 }
 
+
 function CompeItem(props) {
-    const { item, asignarCompe, addPdfCompe, verCompe } = props;
-    console.log(item.certs.0.activa);
+    const { item, asignarCompe, addPdfCompe, verCompe, guia } = props;
+        
 
     return (
         <List.Item
             actions={[
                 <Switch
-                    defaultChecked={false}
-                    onChange={e => asignarCompe(item, e)}
+                    defaultChecked={DefaultCheck(item, guia).then(res)}
+                    onChange={e => asignarCompe(item, guia, e)}
                 />,
                 <Button type="primary" onClick={() => addPdfCompe (item)} >
                     <Icon type="edit" />
@@ -129,6 +162,26 @@ function CompeItem(props) {
             <List.Item.Meta title={item.name} description={item.name} />
         </List.Item>
     );
+}
+
+ function DefaultCheck(i, g) {
+    const guia  = g;
+    const item = i;
+    const accessToken =  getAccessTokenApi();
+
+    const encontrado = findCompeApi(accessToken, guia._id ,item._id)
+    .then(response => {
+        if (response.cert === true) {
+            
+            return (true);
+        } else if (response.cert === false) {
+            
+            return (false);
+        }
+    })
+    .catch(err => {
+            return (null);
+    })
 }
 
 {/* <div className="lista-competencias__header">
