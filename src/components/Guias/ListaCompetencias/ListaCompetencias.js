@@ -21,12 +21,16 @@ export default function ListaCompetencias(props) {
     const [isVisibleModal, setIsVisibleModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState(null);
-    
-    
+    const accessToken = getAccessTokenApi();
 
-    useEffect(() => {
+
+    useEffect( () => {
         const listItemsArray = [];
         compe.forEach(item => {
+            let data = getDef(accessToken, item, guia)
+            .then(data => {
+                return data;
+            }).catch(err => console.log(err))
             listItemsArray.push({
                 content: (
                     <CompeItem
@@ -35,12 +39,62 @@ export default function ListaCompetencias(props) {
                         addPdfCompe={addPdfCompe}
                         verCompe={verCompe}
                         guia={guia}
+                        def={data.cert}
                     />
                 )
             });
-        });
+        
         setListItems(listItemsArray);
+            
     }, [compe]);
+
+    
+    const getDef = (access, item, guia) => {
+        return new Promise(function (res, err) {
+            let enc = findCompeApi(access, guia._id, item._id);
+    
+            if(enc){
+                res(enc)
+            } else {
+                err("error de algun tipo: ")
+            }
+        });
+    }
+
+    
+
+    const definir = (i, g) => {
+        const guia  = g;
+        const item = i;
+        const accessToken = getAccessTokenApi();
+        let promRes = false;
+        
+        let myPromise = new Promise(function (res, err) {
+            let enc = findCompeApi(accessToken, guia._id, item._id);
+    
+            if(enc){
+                res(enc)
+            } else {
+                err("error de algun tipo: ")
+            }
+        });
+    
+       let res = myPromise.then(
+            function(value) {
+                console.log("promresss");
+                promRes = value.cert;
+                console.log(promRes);
+                return promRes;
+                
+                
+            },
+            function(error){
+                console.log("errorrr");
+                console.log(error);
+            }
+        )
+        return res;
+    }
 
     const asignarCompe = (i, g, e) => {
         const accessToken = getAccessTokenApi();
@@ -141,14 +195,14 @@ export default function ListaCompetencias(props) {
 
 
 function CompeItem(props) {
-    const { item, asignarCompe, addPdfCompe, verCompe, guia } = props;
-        
+    const { item, asignarCompe, addPdfCompe, verCompe, guia, def } = props;
+    
 
     return (
         <List.Item
             actions={[
                 <Switch
-                    defaultChecked={DefaultCheck(item, guia).then(res)}
+                    defaultChecked={ def }
                     onChange={e => asignarCompe(item, guia, e)}
                 />,
                 <Button type="primary" onClick={() => addPdfCompe (item)} >
@@ -162,27 +216,45 @@ function CompeItem(props) {
             <List.Item.Meta title={item.name} description={item.name} />
         </List.Item>
     );
+    
 }
 
- function DefaultCheck(i, g) {
-    const guia  = g;
-    const item = i;
-    const accessToken =  getAccessTokenApi();
 
-    const encontrado = findCompeApi(accessToken, guia._id ,item._id)
-    .then(response => {
-        if (response.cert === true) {
+
+//   function DefaultCheck(i, g) {
+//     const guia  = g;
+//     const item = i;
+//     const accessToken = getAccessTokenApi();
+//     let promRes = false;
+    
+//     let myPromise = new Promise(function (res, err) {
+//         let enc = findCompeApi(accessToken, guia._id, item._id);
+
+//         if(enc){
+//             res(enc)
+//         } else {
+//             err("error de algun tipo: ")
+//         }
+//     });
+
+//     myPromise.then(
+//         function(value) {
+//             console.log("promresss");
+//             promRes = value.cert;
+//             console.log(promRes);
+//             return promRes;
             
-            return (true);
-        } else if (response.cert === false) {
             
-            return (false);
-        }
-    })
-    .catch(err => {
-            return (null);
-    })
-}
+//         },
+//         function(error){
+//             console.log("errorrr");
+//             console.log(error);
+//         }
+//     )
+// }
+
+
+    
 
 {/* <div className="lista-competencias__header">
                 <Button type="primary" onClick={addCompeModal} >
