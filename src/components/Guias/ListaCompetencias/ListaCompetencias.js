@@ -23,30 +23,37 @@ export default function ListaCompetencias(props) {
     const [modalContent, setModalContent] = useState(null);
     const accessToken = getAccessTokenApi();
 
-
     useEffect( () => {
         const listItemsArray = [];
+        let resultado;
         compe.forEach(item => {
-            let data = getDef(accessToken, item, guia)
+            resultado = getDef(accessToken, item, guia)
             .then(data => {
-                return data;
+                listItemsArray.push({
+                    content: (
+                        <CompeItem
+                            item={item}
+                            asignarCompe={asignarCompe}
+                            addPdfCompe={addPdfCompe}
+                            verCompe={verCompe}
+                            guia={guia}
+                            def={data.cert}
+                        />
+                    )
+                })
+                return listItemsArray;
+                
             }).catch(err => console.log(err))
-            listItemsArray.push({
-                content: (
-                    <CompeItem
-                        item={item}
-                        asignarCompe={asignarCompe}
-                        addPdfCompe={addPdfCompe}
-                        verCompe={verCompe}
-                        guia={guia}
-                        def={data.cert}
-                    />
-                )
-            });
-        
-        setListItems(listItemsArray);
             
+        }).then(res => {
+            console.log(res);
+        })
+
+        setListItems(listItemsArray);
+        
+          
     }, [compe]);
+
 
     
     const getDef = (access, item, guia) => {
@@ -272,3 +279,9 @@ function CompeItem(props) {
             //         />
             //     );
             // };
+
+
+         
+
+            
+         
