@@ -16,43 +16,39 @@ import "./ListaCompetencias.scss";
 const { confirm } = ModalAntd;
 
 export default function ListaCompetencias(props) {
-    const { compe, setReloadCompe, guia } = props;
+    const { compe, setReloadCompe, guia, defu } = props;
     const [listItems, setListItems] = useState([]);
     const [isVisibleModal, setIsVisibleModal] = useState(false);
     const [modalTitle, setModalTitle] = useState("");
     const [modalContent, setModalContent] = useState(null);
     const accessToken = getAccessTokenApi();
+    let i=0;
 
     useEffect( () => {
-        const listItemsArray = [];
-        let resultado;
-        compe.forEach(item => {
-            resultado = getDef(accessToken, item, guia)
-            .then(data => {
-                listItemsArray.push({
-                    content: (
-                        <CompeItem
-                            item={item}
-                            asignarCompe={asignarCompe}
-                            addPdfCompe={addPdfCompe}
-                            verCompe={verCompe}
-                            guia={guia}
-                            def={data.cert}
-                        />
-                    )
-                })
-                return listItemsArray;
-                
-            }).catch(err => console.log(err))
-            
-        }).then(res => {
-            console.log(res);
-        })
-
-        setListItems(listItemsArray);
+        let listItemsArray = [];
+        console.log(defu.[].[0]);
         
+        compe.forEach(item => {
+            
+            listItemsArray.push({
+                content: (
+                    <CompeItem
+                        item={item}
+                        asignarCompe={asignarCompe}
+                        addPdfCompe={addPdfCompe}
+                        verCompe={verCompe}
+                        guia={guia}
+                        def={defu[i]}
+                    />
+                )
+            })
+           
+            i++;
+            setListItems(listItemsArray);
+        })
+    
           
-    }, [compe]);
+    }, [defu]);
 
 
     
