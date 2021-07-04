@@ -23,10 +23,11 @@ export default function ListaCompetencias(props) {
     const [modalContent, setModalContent] = useState(null);
     const accessToken = getAccessTokenApi();
     let i=0;
+    console.log("deuuuu");
+    console.log(defu);
 
     useEffect( () => {
         let listItemsArray = [];
-        console.log(defu.[].[0]);
         
         compe.forEach(item => {
             
@@ -38,7 +39,7 @@ export default function ListaCompetencias(props) {
                         addPdfCompe={addPdfCompe}
                         verCompe={verCompe}
                         guia={guia}
-                        def={defu[i]}
+                        def={false}
                     />
                 )
             })

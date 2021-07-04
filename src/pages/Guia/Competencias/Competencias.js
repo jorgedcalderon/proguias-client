@@ -14,7 +14,7 @@ import "./Competencias.scss";
 export default function Competencias() {
     const { user } = useAuth();
     const [compe, setCompe] = useState([]);
-    const [defu, setDefu] = useState([]);
+    const [defu, setDefu] = useState();
     const [guia, setGuia] = useState({});
     const [reloadCompe, setReloadCompe] = useState(false);
     const [listo, setListo] = useState(false);
@@ -22,6 +22,7 @@ export default function Competencias() {
     const status = true;
     let datosGuia;
     let datosCompe;
+    let arreglo = [];
     
 
     useEffect(() => {
@@ -34,17 +35,21 @@ export default function Competencias() {
           datosCompe= response.compes;
           
         }).then( () => {
+
+          datosCompe.forEach(item => {
+            let dato = item._id;
+            arreglo.push(dato);
+          });
+          let hola = Defun(accessToken, arreglo, guia);
+          console.log("holaaaa");
+          console.log(hola);
           
-          Defun(accessToken, datosCompe, datosGuia).then(response => {
-            setDefu(response);
-            setListo(true);
-          })
         })
       })
 
-      
+
         setReloadCompe(false);
-      }, [reloadCompe, user]);
+      }, [reloadCompe]);
 
       if (listo === false) {
         return (
@@ -71,15 +76,15 @@ async function Email(email){
   return guiaData.guia;
 }
 
-async function Defun(access, compe, guia){
-  let listArray = [];
-  
-  compe.forEach(item => {
-    findCompeApi(access, guia._id, item._id).then(data => {
-      listArray.push(data.cert);
-      
-    })
+async function Defun(access, arreglo, guia){
+  let conecta = [];
+  let i=0;
+
+  arreglo.forEach(item => {
+    let hola = findCompeApi(access, guia._id, arreglo[i]);
+    console.log(arreglo[i]);
+    i++;
   });
   
-  return listArray;
+  return conecta;
 }
