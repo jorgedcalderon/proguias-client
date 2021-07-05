@@ -35,14 +35,18 @@ export default function Competencias() {
           datosCompe= response.compes;
           
         }).then( () => {
-
-          datosCompe.forEach(item => {
-            let dato = item._id;
-            arreglo.push(dato);
-          });
-          let hola = Defun(accessToken, arreglo, guia);
-          console.log("holaaaa");
-          console.log(hola);
+          
+          async function EsperaDef() {
+            var newArr = [];
+            for (const elem of datosCompe) {
+              const newDef = await Defun(accessToken, datosGuia, elem);
+              
+              newArr.push(newDef);
+            }
+           setDefu(newArr);
+           setListo(true);
+          }
+          EsperaDef();
           
         })
       })
@@ -50,6 +54,8 @@ export default function Competencias() {
 
         setReloadCompe(false);
       }, [reloadCompe]);
+
+      
 
       if (listo === false) {
         return (
@@ -76,15 +82,13 @@ async function Email(email){
   return guiaData.guia;
 }
 
-async function Defun(access, arreglo, guia){
-  let conecta = [];
-  let i=0;
-
-  arreglo.forEach(item => {
-    let hola = findCompeApi(access, guia._id, arreglo[i]);
-    console.log(arreglo[i]);
-    i++;
+function Defun(access, guia, elem){
+  return new Promise ((resolve) => {
+    let newBusqueda = findCompeApi(access, guia._id, elem._id);
+    resolve(newBusqueda)
   });
-  
-  return conecta;
 }
+
+
+
+
