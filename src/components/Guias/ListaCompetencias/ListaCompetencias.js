@@ -86,16 +86,17 @@ export default function ListaCompetencias(props) {
 
    
 
-    const verCompe = compe => {
+    const verCompe = (item, guia) => {
         const accessToken = getAccessTokenApi();
 
         setIsVisibleModal(true);
-        setModalTitle(`Competencia: ${compe.name}`);
+        setModalTitle(`Competencia: ${item.name}`);
         setModalContent (
             <VerCompetencia
                 setIsVisibleModal={setIsVisibleModal}
                 setReloadCompe={setReloadCompe}
-                compe={compe}
+                item={item}
+                guia={guia}
             />
         );
     };
@@ -154,7 +155,7 @@ function CompeItem(props) {
                 <Button type="primary" disabled={!def} onClick={() => addPdfCompe (item, guia)} >
                     <Icon type="edit" />
                 </Button>,
-                <Button type="primary" disabled={!def} onClick={() => verCompe(item)} >
+                <Button type="primary" disabled={!def} onClick={() => verCompe(item, guia)} >
                     <Icon type="eye" />
                 </Button>
             ]}

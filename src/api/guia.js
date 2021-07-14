@@ -358,3 +358,38 @@ export function borrarCompeApi(token, userId, idCompe) {
 
 }
 
+export function getCompeDocApi(compeName) {
+  const url = `${basePath}/${apiVersion}/get-compe-doc/${compeName}`;
+
+  return fetch(url)
+    .then(response => {
+      return response.url;
+    })
+    .catch(err => {
+      return err.message;
+    });
+}
+
+export function getCertsApi(token, id, idCompe){
+  const url = `${basePath}/${apiVersion}/get-certs/${id}`;
+
+  const params ={
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    body: JSON.stringify({
+      idCompe: idCompe
+    })
+  };
+
+  return fetch(url, params).then(response => {
+    return response.json();
+  }).then(result =>{
+    return result;
+  }).catch(err => {
+    return err.message;
+  });
+}
+
