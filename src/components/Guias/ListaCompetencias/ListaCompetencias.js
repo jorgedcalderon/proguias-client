@@ -101,14 +101,15 @@ export default function ListaCompetencias(props) {
         );
     };
 
-    const addPdfCompe = compe => {
+    const addPdfCompe = (item, guia) => {
         setIsVisibleModal(true);
-        setModalTitle(`Agrega los documentos de: ${compe.name}`);
+        setModalTitle(`Agrega los documentos de: ${item.name}`);
         setModalContent (
             <EditCompetenciaForm
                 setIsVisibleModal={setIsVisibleModal}
                 setReloadCompe={setReloadCompe}
-                compe={compe}
+                item={item}
+                guia={guia}
             />
         );
     };

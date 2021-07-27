@@ -393,3 +393,30 @@ export function getCertsApi(token, id, idCompe){
   });
 }
 
+export function subirCompeApi(token, id, idCompe, compe){
+  const url = `${basePath}/${apiVersion}/subir-compe-doc/${id}/${idCompe}`;
+
+  const formData = new FormData();
+  formData.append("compe", compe, compe.name);
+
+  const params = {
+    method: "PUT",
+    body: formData,
+    headers: {
+      Authorization: token
+    }
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result;
+    })
+    .catch(err => {
+      return err.message;
+    });
+
+}
+

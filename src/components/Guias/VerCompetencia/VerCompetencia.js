@@ -24,26 +24,31 @@ export default function VerCompetencia(props) {
     //Create new plugin instance
     const defaultLayoutPluginInstance = defaultLayoutPlugin();
     
-    useEffect(() => {
-       getCertsApi(token, guia._id, item._id).then(response => {
-           console.log(response.certs.path);
-           if(response.certs.path) {
-               setDocumento(response.certs.path);
-           } else {
-               setDocumento(null);
-           }
+    // useEffect(() => {
+    //    getCertsApi(token, guia._id, item._id).then(response => {
+    //        console.log(response.certs.path);
+    //        if(response.certs.path) {
+    //            setDocumento(response.certs.path);
+    //        } else {
+    //            setDocumento(null);
+    //        }
 
-       }).catch(err => {
-           console.log("error");
-           console.log(err);
-       })
-    }, [guia])
+    //    }).catch(err => {
+    //        console.log("error");
+    //        console.log(err);
+    //    })
+    // }, [guia])
 
-    useEffect(() => {
+    // useEffect(() => {
         
-    }, [documento])
+    // }, [documento])
 
     return(
-        <h1>Ver Competencia Modal</h1>
+        <div className="pdf-container">
+            {documento&&<><Worker workerUrl="https://unpkg.com/pdfjs-dist@2.6.347/build/pdf.worker.min.js">
+            <Viewer fileUrl={documento}
+            plugins={[defaultLayoutPluginInstance]} />
+            </Worker></>}
+        </div>
     );
 }
