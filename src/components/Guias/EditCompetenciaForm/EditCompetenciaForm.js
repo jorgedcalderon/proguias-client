@@ -24,8 +24,12 @@ function UploadCompe(props) {
         if (documento) {
           if (documento.preview) {
             setDocUrl(documento.preview);
+            console.log("documento-preview");
+            console.log(documento);
           } else {
             setDocUrl(documento);
+            console.log("documento");
+            console.log(documento);
           }
         } else {
             setDocUrl(null);
