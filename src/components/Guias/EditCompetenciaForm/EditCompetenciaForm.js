@@ -11,14 +11,31 @@ export default function EditCompetenciaForm(props) {
     const token = getAccessTokenApi();
 
     return (
-        <UploadCompe documento={documento} setDocumento={setDocumento} />
+        <UploadCompe
+        documento={documento}
+        setDocumento={setDocumento}
+        item={item}
+        guia={guia}
+        />
 
     );
 }
 
 function UploadCompe(props) {
-    const { documento, setDocumento } = props;
+    const { documento, setDocumento, item, guia } = props;
     const [docUrl, setDocUrl] = useState(null);
+
+    useEffect(() => {
+      
+      console.log("datos en effect de docurl");
+      console.log(item);
+      console.log(guia);
+      if(docUrl !== null){
+        console.log("if doc");
+        console.log(docUrl);
+      } 
+
+    }, [docUrl])
 
     useEffect(() => {
         if (documento) {
@@ -55,11 +72,11 @@ function UploadCompe(props) {
           <input {...getInputProps()} />
           {isDragActive ? (
             <div className="upload-doc__zone">
-                DROPZONE
+                Suéltalo
             </div>
           ) : (
             <div className="upload-doc__zone">
-                NO DROPZONE
+                Da click aquí o arrastra tu documento
             </div>
           )}
         </div>
