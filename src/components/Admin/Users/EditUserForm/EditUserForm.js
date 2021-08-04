@@ -135,7 +135,7 @@ function UploadAvatar(props) {
   );
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: "image/jpeg, image/png, application/pdf",
+    accept: "image/jpeg, image/png",
     noKeyboard: true,
     onDrop
   });

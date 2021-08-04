@@ -8,7 +8,7 @@ import "./EditCompetenciaForm.scss";
 export default function EditCompetenciaForm(props) {
     const { item, guia, setReloadCompe, setIsVisibleModal } = props;
     const [documento, setDocumento] = useState(null);
-    const token = getAccessTokenApi();
+    
 
     return (
         <UploadCompe
@@ -16,23 +16,33 @@ export default function EditCompetenciaForm(props) {
         setDocumento={setDocumento}
         item={item}
         guia={guia}
+        setReloadCompe={setReloadCompe}
+        setIsVisibleModal={setIsVisibleModal}
         />
 
     );
 }
 
 function UploadCompe(props) {
-    const { documento, setDocumento, item, guia } = props;
+    const { documento, setDocumento, item, guia, setReloadCompe, setIsVisibleModal } = props;
     const [docUrl, setDocUrl] = useState(null);
+    const token = getAccessTokenApi();
 
     useEffect(() => {
       
       console.log("datos en effect de docurl");
       console.log(item);
       console.log(guia);
+      console.log("----------");
       if(docUrl !== null){
         console.log("if doc");
         console.log(docUrl);
+        console.log("----------");
+
+        subirCompeApi(token, guia._id, item._id, docUrl).then(response => {
+          console.log(response);
+          setIsVisibleModal(false);
+        });
       } 
 
     }, [docUrl])
@@ -40,13 +50,15 @@ function UploadCompe(props) {
     useEffect(() => {
         if (documento) {
           if (documento.preview) {
-            setDocUrl(documento.preview);
+            setDocUrl(documento.file);
             console.log("documento-preview");
             console.log(documento);
+            console.log("----------");
           } else {
-            setDocUrl(documento);
+            setDocUrl(documento.file);
             console.log("documento");
             console.log(documento);
+            console.log("----------");
           }
         } else {
             setDocUrl(null);
