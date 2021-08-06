@@ -15,6 +15,7 @@ import AddUserForm from "../AddUserForm";
 import {
   getAvatarGuiaApi,
   activateGuiaApi,
+  activoGuiaApi,
   deleteGuiaApi
 } from "../../../../api/guia";
 import { getAccessTokenApi } from "../../../../api/auth";
@@ -54,7 +55,7 @@ export default function ListUsers(props) {
           </span>
         </div>
         <Button type="primary" onClick={addUserModal}>
-          Nuevo usuario
+          Nuevo guía
         </Button>
       </div>
 
@@ -109,6 +110,15 @@ function UsersActive(props) {
     );
   };
 
+  const verCompes = user => {
+    console.log(user);
+    setIsVisibleModal(true);
+    setModalTitle(`Competencias de ${user.name} ${user.lastname}`);
+    setModalContent(
+      <h1>Competencia</h1>
+    );
+  };
+
   return (
     <List
       className="users-active"
@@ -118,6 +128,7 @@ function UsersActive(props) {
         <UserActive
           user={user}
           editUser={editUser}
+          verCompes={verCompes}
           setReloadUsers={setReloadUsers}
         />
       )}
@@ -126,7 +137,7 @@ function UsersActive(props) {
 }
 
 function UserActive(props) {
-  const { user, editUser, setReloadUsers } = props;
+  const { user, editUser, verCompes, setReloadUsers } = props;
   const [avatar, setAvatar] = useState(null);
 
   useEffect(() => {
@@ -156,6 +167,16 @@ function UserActive(props) {
       });
   };
 
+  const activoGuia = (user, status) => {
+    const accessToken = getAccessTokenApi();
+
+    activoGuiaApi(accessToken, user._id, status).then(response => {
+        notification["success"]({
+            message: response
+        });
+    });
+};
+
   const showDeleteConfirm = () => {
     const accesToken = getAccessTokenApi();
 
@@ -181,10 +202,18 @@ function UserActive(props) {
       }
     });
   };
+  console.log(user);
 
   return (
     <List.Item
       actions={[
+        <Switch
+                    defaultChecked={user.activo}
+                    onChange={e => activoGuia(user, e)}
+                />,
+        <Button type="primary" onClick={() => verCompes(user)}>
+          <Icon type="eye" />
+        </Button>,
         <Button type="primary" onClick={() => editUser(user)}>
           <Icon type="edit" />
         </Button>,

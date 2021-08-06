@@ -15,7 +15,6 @@ import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { Worker } from '@react-pdf-viewer/core'; // install this library
 
 import "./VerCompetencia.scss";
-import pdfFile from "../../../assets/pdf/ejemplo.pdf";
 
 export default function VerCompetencia(props) {
     const {item, guia } = props;

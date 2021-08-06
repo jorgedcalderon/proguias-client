@@ -3,6 +3,10 @@
 .guia-info-admin {
   text-align: center;
 
-  &__title {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
   }
 }

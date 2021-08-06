@@ -161,6 +161,32 @@ export function activateGuiaApi(token, userId, status) {
     });
 }
 
+export function activoGuiaApi(token, userId, status) {
+  const url = `${basePath}/${apiVersion}/activo-guia/${userId}`;
+
+  const params = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token
+    },
+    body: JSON.stringify({
+      activo: status
+    })
+  };
+
+  return fetch(url, params)
+    .then(response => {
+      return response.json();
+    })
+    .then(result => {
+      return result.message;
+    })
+    .catch(err => {
+      return err.message;
+    });
+}
+
 export function deleteGuiaApi(token, userId) {
   const url = `${basePath}/${apiVersion}/delete-guia/${userId}`;
 
