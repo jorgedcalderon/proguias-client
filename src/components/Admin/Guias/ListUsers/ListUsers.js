@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 import {
   Switch,
   List,
@@ -8,6 +9,7 @@ import {
   Modal as ModalAntd,
   notification
 } from "antd";
+import DragSortableList from "react-drag-sortable";
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 import Modal from "../../../Modal";
 import EditUserForm from "../EditUserForm";
@@ -16,9 +18,11 @@ import {
   getAvatarGuiaApi,
   activateGuiaApi,
   activoGuiaApi,
-  deleteGuiaApi
+  deleteGuiaApi,
+  certsPopuladasApi
 } from "../../../../api/guia";
 import { getAccessTokenApi } from "../../../../api/auth";
+import VerCompetenciaAdmin from "../VerCompetenciaAdmin";
 
 import "./ListUsers.scss";
 
@@ -111,12 +115,32 @@ function UsersActive(props) {
   };
 
   const verCompes = user => {
-    console.log(user);
-    setIsVisibleModal(true);
-    setModalTitle(`Competencias de ${user.name} ${user.lastname}`);
-    setModalContent(
-      <h1>Competencia</h1>
-    );
+    const accessToken = getAccessTokenApi();
+    
+    certsPopuladasApi(accessToken, user._id).then(response => {
+      const certsArray = [];
+      response.certs.forEach(cert => {
+        certsArray.push({
+          content: (
+           <VerCompetenciaAdmin
+              guia={user}
+              item={cert}
+           />
+          )
+        })
+      });
+      
+      
+      setIsVisibleModal(true);
+      setModalTitle(`Competencias de ${user.name} ${user.lastname}`);
+      setModalContent(
+
+        <DragSortableList items={certsArray} type="vertical" />
+        
+        
+      );
+    })
+  
   };
 
   return (
@@ -202,7 +226,7 @@ function UserActive(props) {
       }
     });
   };
-  console.log(user);
+
 
   return (
     <List.Item

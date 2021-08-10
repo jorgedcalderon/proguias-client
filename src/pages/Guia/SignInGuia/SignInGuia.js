@@ -19,9 +19,7 @@ export default function SignIn() {
     <Layout className="sign-in">
       <Content className="sign-in__content">
         <h1 className="sign-in__content-logo">
-          <a href="/">
           <img src={Logo} alt="Pro Guias San Pedro de Atacama" />
-          </a>
         </h1>
 
         <div className="sign-in__content-tabs">

@@ -16,11 +16,14 @@ export default function MenuTop(props) {
   return (
     <div className="menu-top">
       <div className="menu-top__left">
+        <a href="/">
         <img
           className="menu-top__left-logo"
           src={ProLogo}
           alt="ProGuias San Pedro de Atacama"
         />
+        </a>
+        
         <Button type="link" onClick={() => setMenuCollapsed(!menuCollapsed)}>
           <Icon type={menuCollapsed ? "menu-unfold" : "menu-fold"} />
         </Button>
