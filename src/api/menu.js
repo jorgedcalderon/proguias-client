@@ -11,6 +11,7 @@ export function getMenuApi() {
       return result;
     })
     .catch(err => {
+      console.log(err);
       return err.message;
     });
 }

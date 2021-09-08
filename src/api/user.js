@@ -99,13 +99,13 @@ export function uploadAvatarApi(token, avatar, userId) {
   const url = `${basePath}/${apiVersion}/upload-avatar/${userId}`;
 
   const formData = new FormData();
-  formData.append("avatar", avatar, avatar.name);
+  formData.append("avatar", avatar);
 
   const params = {
     method: "PUT",
     body: formData,
     headers: {
-      Authorization: token
+      Authorization: token,
     }
   };
 
@@ -114,6 +114,7 @@ export function uploadAvatarApi(token, avatar, userId) {
       return response.json();
     })
     .then(result => {
+      console.log("RESULTS",result);
       return result;
     })
     .catch(err => {
@@ -137,12 +138,13 @@ export function updateUserApi(token, user, userId) {
   const url = `${basePath}/${apiVersion}/update-user/${userId}`;
 
   const params = {
+    mode: 'cors',
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       Authorization: token
     },
-    body: JSON.stringify(user)
+    body: JSON.stringify(user),
   };
 
   return fetch(url, params)
