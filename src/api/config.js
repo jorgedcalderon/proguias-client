@@ -1,2 +1,2 @@
-export const basePath = "http://www.proguias.cl:3500/api";
+export const basePath = "https://api.proguias.cl:/api";
 export const apiVersion = "v1";
