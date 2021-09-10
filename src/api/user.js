@@ -99,13 +99,13 @@ export function uploadAvatarApi(token, avatar, userId) {
   const url = `${basePath}/${apiVersion}/upload-avatar/${userId}`;
 
   const formData = new FormData();
-  formData.append("avatar", avatar, avatar.name);
+  formData.append("avatar", avatar);
 
   const params = {
     method: "PUT",
     body: formData,
     headers: {
-      Authorization: token
+      Authorization: token,
     }
   };
 

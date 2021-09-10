@@ -51,7 +51,6 @@ const routes = [
         component: GuiaCompetencias,
         exact: true
       }
-      
     ]
   },
   {
