@@ -55,7 +55,7 @@ export default function GuiaInfo(props) {
       <div className="guia-info">
         <Avatar size={250} src={avatar ? avatar : NoAvatar} />
         <h1 className="guia-info__title">{guiaInfo.name} {guiaInfo.lastname}</h1>
-        <h3>Experiencia: <span>7 años</span></h3>
+        <h3>Experiencia: <span>{guiaInfo.expe}</span></h3>
         <h3>Idiomas: <span>Inglés, Español, Frances</span></h3>
         <div className="guia-info__competencia">
           <h2>Competencias:</h2>
