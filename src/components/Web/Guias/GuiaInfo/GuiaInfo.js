@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import { getGuiaApi, getAvatarGuiaApi, certsPopuladasApi } from "../../../../api/guia";
 
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
-
+import VerCompetencia from '../VerCompetencia';
 import "./GuiaInfo.scss";
 
 export default function GuiaInfo(props) {
@@ -50,7 +50,7 @@ export default function GuiaInfo(props) {
           });
         } else {
           console.log(response.certs);
-          setCompetencias(response);
+          setCompetencias(response.certs);
         }
       });
     } else {
@@ -81,8 +81,9 @@ export default function GuiaInfo(props) {
         <div className="guia-info__competencia">
           <h2>Competencias:</h2>
         </div>
-        
-        <h3>WFR</h3><p>Vigente hasta Marzo 2021</p>
+        {competencias.map((competencia)=>{
+          return <VerCompetencia item={competencia} key={competencia._id}/>
+        })}
       </div>
     </>
   );
