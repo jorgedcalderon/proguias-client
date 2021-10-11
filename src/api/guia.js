@@ -446,16 +446,16 @@ export function subirCompeApi(token, id, idCompe, compe){
 
 }
 
-export function certsPopuladasApi(token, id){
+export function certsPopuladasApi(id){
   const url = `${basePath}/${apiVersion}/certs-populadas/${id}`;
 
-  const params ={
+  const params = {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
-      Authorization: token
+      "Content-Type": "application/json"
     }
   };
+
 
   return fetch(url, params).then(response => {
     return response.json();

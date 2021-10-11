@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Spin, notification, Avatar } from "antd";
 import { Helmet } from "react-helmet";
-import { getGuiaApi, getAvatarGuiaApi } from "../../../../api/guia";
+import { getGuiaApi, getAvatarGuiaApi, certsPopuladasApi } from "../../../../api/guia";
 
 import NoAvatar from "../../../../assets/img/png/no-avatar.png";
 
@@ -11,6 +11,7 @@ export default function GuiaInfo(props) {
   const { url } = props;
   const [guiaInfo, setGuiaInfo] = useState({});
   const [avatar, setAvatar] = useState(null);
+  const [competencias, setCompetencias] = useState([]);
 
   useEffect(() => {
     getGuiaApi(url)
@@ -38,10 +39,30 @@ export default function GuiaInfo(props) {
     } else {
       setAvatar(null);
     }
+
+    if (guiaInfo._id){
+      
+      certsPopuladasApi(guiaInfo._id)
+      .then(response => {
+        if (response.code !== 200) {
+          notification["warning"]({
+            message: response.message
+          });
+        } else {
+          console.log(response.certs);
+          setCompetencias(response);
+        }
+      });
+    } else {
+      console.log("null competencias");
+    }
+
   }, [guiaInfo]);
 
 
-  if (!guiaInfo) {
+
+
+  if (!competencias) {
     return (
       <Spin tip="Cargando" style={{ width: "100%", padding: "200px 0" }} />
     );

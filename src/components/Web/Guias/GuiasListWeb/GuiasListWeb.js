@@ -92,7 +92,7 @@ function Guia(props) {
                   // cover={<Avatar size={250} src={avatar ? avatar : NoAvatar} />}
                   actions={[<Button>Ver más</Button>]}
                 >
-                <Meta title={`Nombre: ${guia.name} ${guia.lastname}`} description={`Experiencia: 7 años Registro en Sernatour: Vigente`} />
+                <Meta title={`Nombre: ${guia.name} ${guia.lastname}`} description={`Idiomas: ${guia.idiomas}`} />
                 </Card>
                 </a>
             </Col>

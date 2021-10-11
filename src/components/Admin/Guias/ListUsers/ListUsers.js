@@ -115,9 +115,8 @@ function UsersActive(props) {
   };
 
   const verCompes = user => {
-    const accessToken = getAccessTokenApi();
     
-    certsPopuladasApi(accessToken, user._id).then(response => {
+    certsPopuladasApi(user._id).then(response => {
       const certsArray = [];
       response.certs.forEach(cert => {
         certsArray.push({
